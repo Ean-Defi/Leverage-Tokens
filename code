@@ -1,0 +1,1016 @@
+
+<!doctype html>
+<!--[if IE 8 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Home - Leveraged Tokens</title>
+<meta name="description" content=Evolutionary Algorithm Network>
+<meta name="keywords" content=EAN>
+<link rel="shortcut icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+<link title="" href="/static/plugins/layui/css/layui.css" rel="stylesheet">
+<link title="" href="/static/css/future/common.css" rel="stylesheet">
+<link title="" href="/static/css/otc/common.css" rel="stylesheet">
+<link href="/static/css/future/theme.css" rel="stylesheet">
+<link href="/static/css/future/trade.css" rel="stylesheet">
+<link href="/static/css/future/currency.css" rel="stylesheet">
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/plugins/layui/layui.all.js"></script>
+<script type="text/javascript" src="/static/plugins/lazyload/jquery.lazyload.min.js"></script>
+<script type='text/javascript' src='/static/js/lang/lang.js?v=20210106'></script>
+<script type="text/javascript" src="/static/js/common.js?1111"></script>
+<script type='text/javascript' src='/static/js/common_view.js'></script>
+<script type='text/javascript' src='/static/js/common_websocket.js?v=20210106'></script>
+<script type="text/javascript">
+        window.conf = {
+            "ROOT"      : "",
+            "APP"       : "",
+            "OSS"       : "",
+            "STATIC"    : "/static",
+            "SUFFIX"    : "html",
+            "SMS_VERFY" : "",
+            "PHONE_VERFY" : "",
+            "USER_ID"  : "0",
+            "TIME_TASK"  : "1",
+            "COMMON_WEBSOCKET_URL" : "wss://www.eanex.io/wsotc",
+        };
+        $(function () {
+            WST.initVisitor();
+            WST.initWebSocket();
+        });
+    </script>
+<script type='text/javascript' src='/static/js/socket.io.js?v=20210106'></script>
+
+</head>
+<body>
+<style>
+    .code_wrap img:nth-child(2){
+        display:none;
+    }
+    .themes{
+        height:60px;
+        line-height:58px;
+    }
+</style>
+<div class="header-top">
+<div class='wst-search-container clearfix'>
+<div class='wst-logo fl' style="padding:2px 0;">
+<a href="/home/index/index.html" title="">
+
+<img src="https://coins.eanex.io//upload/sysconfigs/2020-06/5efb27ce2fe8d.png" class="btc_logo" height="30">
+</a>
+</div>
+<div id="wst-nav-items">
+<ul class="nav navbar-nav navbar-left navbar-main-link fl">
+<li>
+<a href="/">Home</a>
+</li>
+<li class="cur">
+<a href="/token/index/index.html">Leveraged Tokens</a>
+</li>
+<li>
+<a href="/future/index/index.html">Futures</a>
+</li>
+<li>
+<a href="/easy/index/index.html">DeFi</a>
+</li>
+<li>
+<a href="/users/index.html">User Center</a>
+</li>
+<li>
+<a href="/cover/catid/1.html">Platform</a>
+</li>
+<li>
+<a href="/cover/catid/2.html">Help centre</a>
+</li>
+</ul>
+</div>
+<div id="navbar-right" class="fr clearfix">
+<ul class="clearfix nav-ul" style="float: left;">
+<li class="fl" style="margin-right: 20px">
+<div class="themes" id="change_themes">
+<span id="dark"><i class="icon-night"></i></span>
+<span id="default"><i class="icon-daytime"></i></span>
+</div>
+</li>
+
+<li class="btc-login fl">
+<a class="fs-md color_lg" style="cursor: pointer;" href="/login.html">Login</a>
+<a class="fs-md color_rg" href="/register.html" style="cursor: pointer;">Register</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+<div class="change-lang">
+<div class="islang color-white"><i class="icon-lang"></i></div>
+<div class="lang-list">
+<dl>
+<dd lang="zh-cn" data-name="changeLang">中文</dd>
+<dd lang="en-us" data-name="changeLang">English</dd>
+<dd lang="ko-kr" data-name="changeLang">한국어</dd>
+<dd lang="ja-jp" data-name="changeLang">日本語</dd>
+<dd lang="vi-vn" data-name="changeLang">Việt Nam</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type='text/javascript' src='/static/js/qrcode.js'></script>
+<script type="text/javascript">
+	$(function(){
+		$('.j-dorpdown').hover(function () {
+            $(this).find('.j-dorpdown-layer').show();
+        }, function () {
+            $(this).find('.j-dorpdown-layer').hide();
+        });
+        $('.j-dorpdown-layer').hover(function () {
+            $(this).find('.j-dorpdown-layer').show();
+        }, function () {
+            $(this).find('.j-dorpdown-layer').hide();
+        });
+
+		//日期
+		var element = layui.element,
+            form = layui.form;
+            form.render();
+        var msgArr = [];
+        //系统消息的全选
+        form.on('checkbox(navChooesType)', function (data) {
+            var child = $(data.elem).parents('.nav_ifos_box').find('.nav_ifos_mian  ul li input[name="nav_check"]');
+            msgArr = '';
+            child.each(function (index, item) {
+                item.checked = data.elem.checked;
+                if(item.checked == true){
+                    msgArr += item.value+',';
+                }else{
+                    msgArr = '';
+                }
+            });
+            form.render('checkbox');
+        });
+
+        if(localStorage.getItem('lang')) {
+            var langText = localStorage.getItem('lang');
+            if(langText=='zh-cn'){
+                $('.islang').text('中文');
+            }else if(langText == 'en-us'){
+                $('.islang').text('English');
+            }else if(langText == 'ko-kr'){
+                $('.islang').text('한국어');
+            }else  if(langText == 'ja-jp'){
+                $('.islang').text('日本語');
+            }else if(langText == 'vi-vn'){
+                $('.islang').text('Việt Nam');
+            }
+		} else {
+			$('.islang').text('English');
+
+		}
+
+    });
+    //切换中英文
+    $('body').on('mouseover', '.change-lang', function() {
+        $('.lang-list').show();
+    });
+    $('body').on('mouseleave', '.change-lang', function() {
+        $('.lang-list').hide();
+    });
+    $('body').on('click', '.lang-list dl dd', function() {
+        var that = this;
+        //          $('.islang').find('.textlang').html($(that).text());
+        localStorage.setItem('langSrc', $(that).attr('data-src'));
+        localStorage.setItem('lang', $(that).attr('lang'));
+        var data = {
+            'lang': $(that).attr('lang')
+        };
+        $.get("/home/index/lang.html", data, function() {
+            location.reload();
+        });
+
+    });
+
+    //获取选中的站内信息条数的id
+    function getChk(obj){
+        msgArr = msgArr;
+        var liObj = $(obj).find('input[name="nav_check"]');
+        if(liObj[0].checked == true){
+            msgArr += liObj.val()+',';
+        }
+    }
+    function reads(){
+        if(msgArr == ''){
+            layer.msg('Unchecked message');
+            return false;
+        }
+        $.post('/home/messages/batchRead',{ids:msgArr},function (data) {
+            layer.msg(data.msg);
+            if(data.status == 1){
+                $('.nav_ifos_mian  ul li').each(function() {
+                    if($(this).find('input[name="nav_check"]').is(":checked")){
+                        $(this).remove();
+                    }
+                });
+            }
+        })
+    }
+    //二维码,参数1表示图像大小，取值范围1-10；参数2表示质量，取值范围'L','M','Q','H'
+    var a = qrcode(6, 'M');
+    var url = 'https://www.eanex.io/'+'home/index/download/?request=1';
+    a.addData(url);
+    a.make();
+    $('.download-code').prepend(a.createImgTag());
+    $('.code_wrap').prepend(a.createImgTag());
+</script>
+<div class="sk-main currency bz">
+<div class="sk-continer clearfix">
+<div class="sk-content bz">
+<div class="trade-wrapper clearfix" id="trade-cont">
+
+<div class="currency-left fl">
+<div class="currency-lf-top">
+<div class="token-tit">3x Long BTC</div>
+<div class="token-lf-in">
+<p>
+3X Long BTCMOON is an ERC20 token which seeks a return that corresponds to -3 times the daily return of Bitcoin </p>
+<div class="token-lf-itembox">
+<div class="token-lf-item">
+<span>Underlying</span>
+<span>BTC</span>
+</div>
+<div class="token-lf-item">
+<span>Leverage</span>
+<span>3</span>
+</div>
+<div class="token-lf-item">
+<span>Tokens outstanding</span>
+<span><i class="token_subscribed">103123.96</i>BTCMOON</span>
+</div>
+<div class="token-lf-item">
+ <span>Basket</span>
+<span>2.47642699BTCPERP</span>
+</div>
+<div class="token-lf-item">
+<span></span>
+<span>-56201.51995088USDT</span>
+</div>
+<div class="token-lf-item">
+<span>Basket value</span>
+<span class="basket_val">31037.13USDT</span>
+</div>
+<div class="token-lf-item">
+<span>Total fund value</span>
+<span>USDT <i class="basket_total">3200671752.63</i> </span>
+</div>
+</div>
+</div>
+</div>
+<div class="currency-lf-bot">
+<div class="token-tit">Asset information</div>
+<div class="token-lf-in">
+<div class="token-assets">
+<div class="token-lt">
+<p>
+<span>BTCMOONBalance</span>
+<span class="btc_total">0</span>
+</p>
+<p>
+<span>BTCMOONAvailable balance</span>
+<span class="btc_available">0</span>
+</p>
+</div>
+<div class="token-lb clearfix">
+<a class="gold-btn btn fl" href="javascript:;" onclick="">Deposit</a>
+<a class="withdraw-btn btn fr" href="javascript:;" onclick=""></span>Withdraw</a>
+</div>
+</div>
+<div class="token-assets token-assets1">
+<div class="token-lt">
+<p>
+<span>USDTBalance</span>
+<span class="usdt_total">0</span>
+</p>
+<p>
+<span>USDTAvailable balance</span>
+<span class="usdt_available">0</span>
+</p>
+</div>
+<div class="token-lb clearfix">
+<a class="transfer-btn btn fl" href="javascript:;" onclick="transfer()">Transfer</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="currency-right fr">
+<div class="trade-panel bz fl">
+<div class="chart-wrapper">
+<div class="chart-header bz clearfix">
+<div class="mod-head">
+<div class="ticker">
+
+<input type="hidden" id="buyAdd" />
+<select id="sel_futures">
+<option data-add="BTCMOON">BTCMOON</option>
+<option data-add="BTCREKT">BTCREKT</option>
+<option data-add="BTCNEG">BTCNEG</option>
+ <option data-add="ETHMOON">ETHMOON</option>
+<option data-add="ETHREKT">ETHREKT</option>
+<option data-add="ETHNEG">ETHNEG</option>
+<option data-add="GOLDMOON">GOLDMOON</option>
+<option data-add="GOLDREKT">GOLDREKT</option>
+</select>
+<span class="symbol-type">Main</span>
+<div class="price-container">
+<span class="price color-up " id="latestPrice">31037.13</span>
+<span class="about">≈<i class="ean-rate">27933.41</i><i>USD</i></span>
+</div>
+<dl class="change">
+<dt>Gain</dt>
+<dd class="zfnum color-up">30.34%</dd>
+</dl>
+<dl class="high">
+<dt>24H high</dt>
+<dd class="zgjg">32246.57</dd>
+</dl>
+<dl class="low">
+<dt>24H low</dt>
+<dd class="zdjg">23080.12</dd>
+</dl>
+<dl class="amount">
+<dt>24H quantity</dt>
+<dd><span class="nownum">103265.7</span>BTCMOON</dd>
+</dl>
+</div>
+</div>
+</div>
+
+<div id="chart"></div>
+
+</div>
+<div class="ws-limit clearfix">
+<div class="ws-limit-cont" id="limitCont">
+<div class="ws-limit-tab">
+<span class="cur tab-item">Buy</span>
+<span class="tab-item" style="margin-left: 18px;">Sell</span>
+</div>
+<div class="ws-limit-tabcon" id="limitTab">
+
+<div class="item tab-cont-item">
+<form class="">
+<div class="token-tab-in token-tab-buy">
+<div class="token-tradeBox">
+<div class="token-tradeBox-in">
+
+<div class="token-market token-trade" id="sj_buyCoins">
+<div class="price-box">
+<span class="span1">Entry price</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="sj_input1" value="" onkeyup="limitInput(this);" readonly="readonly">
+<span class="currency1 upper">USDT</span>
+ </label>
+</div>
+</div>
+
+<div class="token-limit token-trade" id="xj_buyCoins">
+<div class="price-box">
+<span class="span1">Entry price</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="xj_input1" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+<span class="currency1 upper">USDT</span>
+</label>
+</div>
+</div>
+</div>
+<div class="amount-box type-box">
+<span class="span1">Order Type</span>
+<select id="trade_select">
+<option value="0">Market</option>
+<option value="1">Limit</option>
+</select>
+</div>
+</div>
+<div class="token-common">
+<div class="mod-body">
+<div class="single-panel limit">
+<div class="form-box" style="">
+<div class="price-box">
+<span class="span1">Take profit exit</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="xj_input2" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+<span class="currency1 upper">USDT</span>
+</label>
+</div>
+<div class="price-box">
+<span class="span1">%Gain</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="zy_rate1" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+</label>
+</div>
+<div class="price-box amount-box">
+<span class="buy-amount span1">Stop loss</span>
+<label class="">
+<input name="amount" autocomplete="off" maxlength="14" class="" id="xj_input3" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+<span class="currency1 upper">USDT</span>
+</label>
+</div>
+<div class="price-box">
+<span class="span1">%Loss</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="zy_rate2" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+</label>
+</div>
+<div class="price-box amount-box num-box">
+<span class="buy-amount span1">Amount</span>
+<label class="">
+<input name="amount" autocomplete="off" maxlength="14" class="" id="xj_input4" value="" onkeyup="javascript:WST.isNumberdote(this,currency_places)">
+<span class="currency1 upper">BTCMOON</span>
+<div class="estimate-box upper">≈ <span class="estimate-span estimate-span1">0</span> USDT</div>
+</label>
+</div>
+<div class="price-box">
+<button type="button" class="submit buy-btn" onclick="buyCurrency()">Buy BTCMOON</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+
+<div class="item tab-cont-item tab-cont-item1 hide">
+<form class="">
+<div class="token-tab-in token-tab-sell">
+<div class="token-tradeBox">
+<div class="token-tradeBox-in">
+
+<div class="token-market token-trade" id="sj_buyCoins1">
+<div class="price-box">
+<span class="span1">Entry price</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="sj_input5" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)" readonly="readonly">
+<span class="currency1 upper">USDT</span>
+</label>
+</div>
+</div>
+
+ <div class="token-limit token-trade" id="xj_buyCoins1">
+<div class="price-box">
+<span class="span1">Entry price</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="xj_input5" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+<span class="currency1 upper">USDT</span>
+</label>
+</div>
+</div>
+</div>
+<div class="amount-box type-box">
+<span class="span1">Order Type</span>
+<select id="trade_select1">
+<option value="0">Market</option>
+<option value="1">Limit</option>
+</select>
+</div>
+</div>
+<div class="token-common">
+<div class="mod-body">
+<div class="single-panel limit">
+<div class="form-box" style="">
+<div class="price-box">
+<span class="span1">Take profit exit</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="xj_input6" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+<span class="currency1 upper">USDT</span>
+</label>
+</div>
+<div class="price-box">
+<span class="span1">%Gain</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="zy_rate3" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+</label>
+</div>
+<div class="price-box amount-box">
+<span class="buy-amount span1">Stop loss</span>
+<label class="">
+<input name="amount" autocomplete="off" maxlength="14" class="" id="xj_input7" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+<span class="currency1 upper">USDT</span>
+</label>
+ </div>
+<div class="price-box">
+<span class="span1">%Loss</span>
+<label class="">
+<input name="price" autocomplete="off" maxlength="14" class="" id="zy_rate4" value="" onkeyup="javascript:WST.isNumberdote(this,price_places)">
+</label>
+</div>
+<div class="price-box amount-box num-box">
+<span class="buy-amount span1">Amount</span>
+<label class="">
+<input name="amount" autocomplete="off" maxlength="14" class="" id="xj_input8" value="" onkeyup="javascript:WST.isNumberdote(this,currency_places)">
+<span class="currency1 upper">BTCMOON</span>
+<div class="estimate-box upper">≈ <span class="estimate-span estimate-span2">0</span> USDT</div>
+</label>
+</div>
+<div class="price-box">
+<button type="button" class="submit sell-btn" style="" onclick="sellCurrency()">Sell BTCMOON</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="trade-book fr">
+<div class="clearfix" style="height:100%;">
+<div class="trades-con">
+<div class="global-trades coin-switch-content">
+<ul class="clearfix">
+<li class="">Order Book</li>
+<li class="cur">Market Trades</li>
+</ul>
+<dl class="clearfix">
+
+<div class="trades-item trades-item1">
+<dt class="bz coin-con-dt">
+<span class="bizhong" style="text-transform:none;">Price</span>
+<span class="price">Quantity</span>
+<span class="rate">Accumulative</span>
+</dt>
+<dt class="bz coin-con-dt">
+<span class="bizhong">(USDT)</span>
+<span class="price">(BTCMOON)</span>
+<span class="rate">(USDT)</span>
+</dt>
+<dd class="coin-con-dd" id="coin-con-dd">
+<div class="coin-con-item on1" id="marketTable">
+<dl class="coin-con-dl red bz trader-down" id="sellRows"></dl>
+<div class="ticker-close" id="rateRows">
+<span><i class="color-up rateRows">9921.6500</i> ≈<i class="rateRows_cny hide1440"> 70642.1480 </i>CNY</span>
+</div>
+<dl class="coin-con-dl green bz trader-up" id="buyRows"></dl>
+</div>
+</dd>
+</div>
+
+<div class="trades-item trades-item2">
+<dt class="bz coin-con-dt">
+<span class="bizhong" style="text-transform:none;">Time</span>
+<span class="price">Price</span>
+<span class="rate">Quantity</span>
+</dt>
+<dt class="bz coin-con-dt">
+<span class="bizhong"></span>
+<span class="price">(USDT)</span>
+<span class="rate">(BTCMOON)</span>
+</dt>
+<dd class="coin-con-dd" id="coin-con-dd">
+<div class="coin-con-item on1">
+<dl class="coin-con-dl bz trader-down" id="real_time">
+</dl>
+</div>
+</dd>
+</div>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="turn-down" id="drap"></div>
+
+<div class="panel-bottom" id="panel-tab" style="display: block;">
+<div class="clearfix">
+<div class="panel-tab-tag fl" id="tab_t">
+<div class="stx-btn tab-item1 on tag_0" onclick="currentFn()">Open orders</div>
+<div class="stx-btn tab-item1 tag_1" onclick="triggerFn()">Trigger Orders</div>
+<div class="stx-btn tab-item1 tag_2" onclick="historyFn()">Trade History</div>
+</div>
+</div>
+<div id="tab_c">
+
+<div class="panel-tab-item">
+<div id="form">
+<form class="form-search" name="form-search">
+<div class="group-form-item clearfix">
+<div class="fl">
+<span></span>
+<select id="current_coins" class="hostory_search" onchange="currentFn();">
+<option>ALL</option>
+<option data-add="BTCMOON" selected>BTCMOON</option>
+<option data-add="BTCREKT">BTCREKT</option>
+<option data-add="BTCNEG">BTCNEG</option>
+<option data-add="ETHMOON">ETHMOON</option>
+<option data-add="ETHREKT">ETHREKT</option>
+<option data-add="ETHNEG">ETHNEG</option>
+<option data-add="GOLDMOON">GOLDMOON</option>
+<option data-add="GOLDREKT">GOLDREKT</option>
+</select>
+</div>
+<div class="cancelAll" id="curr_cancelAll" onclick="curr_cancelAll();">Cancel all</div>
+</div>
+</form>
+</div>
+<div class="stx-current-entrust-head" id="stx-current-head">
+<table cellspacing="0" cellpadding="0" border="0">
+<thead>
+<tr>
+<th width="10%">Variety</th>
+<th width="13%">Time</th>
+<th width="13%">Side</th>
+<th width="13%">Quantity</th>
+<th width="13%">Price</th>
+<th width="13%">Value</th>
+<th width="13%">Filled</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="currentTable">
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div class="panel-tab-item hide">
+<div id="form">
+<form class="form-search" name="form-search">
+<div class="group-form-item clearfix">
+<div class="fl">
+<span></span>
+<select id="trigger_coins" class="hostory_search" onchange="triggerFn();">
+<option>ALL</option>
+<option data-add="BTCMOON" selected>BTCMOON</option>
+<option data-add="BTCREKT">BTCREKT</option>
+<option data-add="BTCNEG">BTCNEG</option>
+<option data-add="ETHMOON">ETHMOON</option>
+<option data-add="ETHREKT">ETHREKT</option>
+<option data-add="ETHNEG">ETHNEG</option>
+<option data-add="GOLDMOON">GOLDMOON</option>
+<option data-add="GOLDREKT">GOLDREKT</option>
+</select>
+</div>
+<div class="cancelAll" id="trigger_cancelAll" onclick="trigger_cancelAll();">Cancel all</div>
+</div>
+</form>
+</div>
+<div class="stx-current-entrust-head">
+ <table cellspacing="0" cellpadding="0" border="0">
+<thead>
+<tr>
+<th width="15%">Variety</th>
+<th width="18%">Trigger price</th>
+<th width="18%">Side</th>
+<th width="18%">Quantity</th>
+<th width="18%">Market</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="triggerTable">
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div class="panel-tab-item hide">
+<div id="form">
+<form class="form-search" name="form-search">
+<div class="group-form-item clearfix">
+<div class="fl">
+<span></span>
+<select id="history_coins" class="hostory_search" onchange="historyFn();">
+<option>ALL</option>
+<option data-add="BTCMOON" selected>BTCMOON</option>
+<option data-add="BTCREKT">BTCREKT</option>
+<option data-add="BTCNEG">BTCNEG</option>
+<option data-add="ETHMOON">ETHMOON</option>
+<option data-add="ETHREKT">ETHREKT</option>
+<option data-add="ETHNEG">ETHNEG</option>
+<option data-add="GOLDMOON">GOLDMOON</option>
+<option data-add="GOLDREKT">GOLDREKT</option>
+</select>
+</div>
+</div>
+</form>
+</div>
+<div class="stx-current-entrust-head">
+<table cellspacing="0" cellpadding="0" border="0">
+<thead>
+<tr>
+<th width="15%">Variety</th>
+<th width="18%">Time</th>
+<th width="18%">Side</th>
+<th width="18%">Quantity</th>
+<th width="18%">Price</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody id="historyTable">
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="transfer" style="display:none;">
+<div class="transfer">
+<div class="transfer_info clearfix">
+<div class="fl">&nbsp;&nbsp;From&nbsp;&nbsp;</div>
+<div class="fl transfer_label" id="a"><span id="transfer_label1" data-id="1">Wallet account</span></div>
+<div class="fl">
+<div style="text-align: center;"><i class="icon_transfer" id="changeStyle"></i></div>
+<div style="text-align: center;margin-top: -5px;">Transfer to</div>
+</div>
+<div class="transfer_label" id="b"><span id="transfer_label2">Contract account</span>
+</div>
+</div>
+<div class="transfer_tab">
+<div class="tab_c">
+<div class="tab_input">
+<div class="ustransfer"><span class="coin" style="color: #ccc;font-size: 16px;">USDT</span>&nbsp;&nbsp;Transferable<span id="max">8.00</span>&nbsp;<span id="nowFuName" class="coin">USDT</span></div>
+<div class="transfer_inner clearfix">
+<input type="text" id="transfer_input" class="transfer_input fl" onkeyup="javascript:WST.isNumberdote(this,2)" placeholder="Please fill in the transfer amount" />
+<span class="fr"><span class="nowFuName coin">USDT</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span id="getAll" style="cursor: pointer;">All</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<input type="hidden" value="" id="fu_name" name="fu_name">
+<script type="text/javascript" src="/static/plugins/Jquerycookie/jquery.cookie.js"></script>
+<script type="text/javascript" src="/charting_library-master/charting_library/charting_library.min.js"></script>
+<script type="text/javascript" src="/charting_library-master/datafeeds/udf/dist/bundle.js"></script>
+<script type="text/javascript" src="/charting_library-master/datafeeds/udf/dist/polyfills.js"></script>
+<script type='text/javascript' src='/templates/token/view/index/trade.js?v=202101061111'></script>
+<script type='text/javascript' src='/templates/token/view/index/coins.js?v=202101061111'></script>
+<script type='text/javascript' src='/templates/token/view/index/server.js?v=202101061111'></script>
+<script type="text/javascript">
+    var position   = {"buyData":[{"name":1,"type":1,"price":"30541.3","num":204.09,"total":"6233173.917"},{"name":2,"type":1,"price":5,"num":1,"total":"5"}],"sellData":[{"name":7,"type":2,"price":"30958.81","num":439.54,"total":"13607635.3474"},{"name":8,"type":2,"price":"30958.8","num":589.1,"total":"18237829.08"},{"name":9,"type":2,"price":"30958.79","num":985.67,"total":"30515150.5393"},{"name":10,"type":2,"price":"30958.77","num":200.4,"total":"6204137.508"},{"name":11,"type":2,"price":"30668.89","num":332.04,"total":"10183298.2356"},{"name":12,"type":2,"price":"30668.88","num":760.61,"total":"23327056.8168"},{"name":13,"type":2,"price":"30668.87","num":101.54,"total":"3114117.0598"},{"name":14,"type":2,"price":"30668.86","num":836.83,"total":"25664622.1138"},{"name":15,"type":2,"price":"30668.85","num":935.14,"total":"28679668.3890"},{"name":16,"type":2,"price":"30668.84","num":123.73,"total":"3794655.5732"},{"name":17,"type":2,"price":"30668.83","num":396.05,"total":"12146390.1215"},{"name":18,"type":2,"price":"30668.82","num":406.12,"total":"12455221.1784"}],"sellprice":"30668.82","buyprice":"30541.3"};
+    var realData   = [{"type":1,"time":"12:49:54","price":"30567.94000000","num":598.75},{"type":1,"time":"12:49:52","price":"30567.94000000","num":11.64},{"type":1,"time":"12:49:52","price":"30567.93000000","num":754.72},{"type":1,"time":"12:49:36","price":"30567.93000000","num":233.28},{"type":1,"time":"12:49:36","price":"30567.92000000","num":440.06},{"type":1,"time":"12:49:22","price":"30567.91000000","num":67.84},{"type":1,"time":"12:49:22","price":"30567.92000000","num":544.36},{"type":1,"time":"12:49:05","price":"30567.91000000","num":461.43},{"type":1,"time":"12:48:53","price":"30567.91000000","num":129.31},{"type":1,"time":"12:48:48","price":"30567.90000000","num":112.51},{"type":1,"time":"12:48:48","price":"30567.91000000","num":242.33},{"type":1,"time":"12:48:33","price":"30567.89000000","num":148.85},{"type":1,"time":"12:48:33","price":"30567.90000000","num":357.75},{"type":1,"time":"12:48:19","price":"30567.89000000","num":197.38},{"type":1,"time":"12:48:05","price":"30567.85000000","num":33.82},{"type":1,"time":"12:48:05","price":"30567.89000000","num":183.23},{"type":1,"time":"12:48:05","price":"30567.88000000","num":629.22},{"type":1,"time":"12:48:05","price":"30567.87000000","num":113.06},{"type":1,"time":"12:47:59","price":"30567.85000000","num":174.38},{"type":2,"time":"12:47:49","price":"30541.30000000","num":417.18},{"type":1,"time":"12:47:32","price":"30611.61000000","num":118.79},{"type":1,"time":"12:47:32","price":"30611.60000000","num":237.04},{"type":1,"time":"12:47:31","price":"30611.60000000","num":245.4},{"type":1,"time":"12:47:30","price":"30611.60000000","num":32.83},{"type":1,"time":"12:47:30","price":"30611.58000000","num":123.32},{"type":1,"time":"12:47:30","price":"30611.59000000","num":571.28},{"type":1,"time":"12:47:29","price":"30611.57000000","num":359.41},{"type":1,"time":"12:47:29","price":"30611.58000000","num":240.14},{"type":1,"time":"12:47:28","price":"30611.57000000","num":474.93},{"type":1,"time":"12:47:27","price":"30611.55000000","num":295.84}];
+    var currency_places  = 2;
+    var price_places  = 2;
+    var rmb = 27933.41;
+    var mainCoin ="BTCMOON";
+    var mainCoin1 ="BTCMOON";
+    var uid = "";
+    var rate = "0.9";
+    var pricebuy = 0;
+    var pricesell = 0;
+    var curr_length = 0;
+    var trigger_length = 0;
+    var zy = false;
+    var zs = false;
+
+
+    $(document).ready(function () {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#startTime',
+            type: 'datetime',
+            format: 'yyyy-MM-dd HH:mm:ss'
+        });
+        laydate.render({
+            elem: '#endTime',
+            type: 'datetime',
+            format: 'yyyy-MM-dd HH:mm:ss'
+        });
+        laydate.render({
+            elem: '#dual-startTime',
+            type: 'datetime',
+            format: 'yyyy-MM-dd HH:mm:ss'
+        });
+        laydate.render({
+            elem: '#dual-endTime',
+            type: 'datetime',
+            format: 'yyyy-MM-dd HH:mm:ss'
+        });
+
+        if (sessionStorage.getItem('style')) {
+            if (sessionStorage.getItem('style') == 'Light') {
+                $(document.body).addClass('Light');
+                bgColor = '#fafafa';
+                hColor = '#eee';
+                vColor = '#eee';
+                color = '#666';
+                upColor = '#01B1A7';
+                downColor = '#f75467';
+            } else {
+                $(document.body).addClass('dark');
+                bgColor = '#030D2D';
+                hColor = 'rgba(41, 46, 79, 0.1)';
+                vColor = 'rgba(41, 46, 79, 0.1)';
+                color = '#959EC6';
+                upColor = '#01b1a7';
+                downColor = '#f75467';
+            }
+        } else {
+            $(document.body).addClass('dark');
+            bgColor = '#030D2D';
+            hColor = '#222';
+            vColor = '#222';
+            color = '#959EC6';
+            upColor = '#01b1a7';
+            downColor = '#f75467';
+            sessionStorage.setItem('style', 'dark');
+        }
+        var daytime = document.getElementById('dark'),
+            night = document.getElementById('default');
+        daytime.addEventListener('click', function () {
+            $(document.body).removeClass('Light').addClass('dark');
+            sessionStorage.setItem('style', 'dark');
+            $('#dark').hide();
+            $('#default').show();
+            bgColor = '#030D2D';
+            hColor = 'rgba(41, 46, 79, 0.1)';
+            vColor = 'rgba(41, 46, 79, 0.1)';
+            color = '#959EC6';
+            upColor = '#01b1a7';
+            downColor = '#f75467';
+            $('iframe')[0].contentWindow.init();
+            widget.applyOverrides({
+                "paneProperties.background": bgColor,
+                "paneProperties.horzGridProperties.color": hColor,
+                "paneProperties.vertGridProperties.color": vColor,
+                "scalesProperties.textColor": color,
+                "mainSeriesProperties.candleStyle.upColor": upColor,
+                "mainSeriesProperties.candleStyle.downColor": downColor,
+            });
+            widget.applyStudiesOverrides({
+                "volume.volume.color.0": upColor,
+                "volume.volume.color.1": downColor,
+            });
+        });
+
+        night.addEventListener('click', function () {
+            $(document.body).removeClass('dark').addClass('Light');
+            sessionStorage.setItem('style', 'Light');
+            $('#default').hide();
+            $('#dark').show();
+            bgColor = '#fafafa';
+            hColor = '#eee';
+            vColor = '#eee';
+            color = '#666';
+            upColor = '#01B1A7';
+            downColor = '#f75467';
+            $('iframe')[0].contentWindow.init();
+            widget.applyOverrides({
+                "paneProperties.background": bgColor,
+                "paneProperties.horzGridProperties.color": hColor,
+                "paneProperties.vertGridProperties.color": vColor,
+                "scalesProperties.textColor": color,
+                "mainSeriesProperties.candleStyle.upColor": upColor,
+                "mainSeriesProperties.candleStyle.downColor": downColor,
+            });
+            widget.applyStudiesOverrides({
+                "volume.volume.color.0": upColor,
+                "volume.volume.color.1": downColor
+            });
+        });
+        resizeScreen();
+        drapScreen();//拖动改变窗口高度
+    });
+    var bgColor = '#030D2D',
+        hColor = 'rgba(41, 46, 79, 0.1)',
+        vColor = 'rgba(41, 46, 79, 0.1)',
+        color = '#eee',
+        upColor = '#01B1A7',
+        downColor = '#f75467';
+    $(function () {
+        var url_fu_name = getParameterByName('fu_name');
+        if (url_fu_name !== '') {
+            $('#sel_futures').val(url_fu_name); // 选中合约币种
+        }
+        //
+        var wsUrl ="wss://www.eanex.io/wsfuture";
+        var fu_name = $('#sel_futures').val();
+        var future_name = "";
+        // 切换合约币种
+        $('#buyAdd').val($('#sel_futures option:selected').attr('data-add'));
+        $('#sel_futures').on('change', function(){
+            $('#buyAdd').val($('#sel_futures option:selected').attr('data-add'));
+            window.location.href = WST.U('token/index/index') + '?fu_name=' + $('#sel_futures').val();
+
+        });
+        $('#fu_name').val(fu_name);
+        var price = Number($('#latestPrice').text());
+        var buyAdd = Number($('#buyAdd').val());
+        $('.buyPrice').text((price + buyAdd).toFixed(price_places));
+        $('.sellPrice').text((price - buyAdd).toFixed(price_places));
+        //初始化该交易市场的推送
+        socketPush(fu_name, wsUrl);
+        //K线图点击
+        // changePeroid(fu_name,timeType);
+        //initPrice(future_name); // 初始化行情报价数据
+        initFutureLever(fu_name); // 初始化合约杠杆数据
+        $('.Varieties').text($("#sel_futures  option:selected").text());
+        $('.latestPrice').text("");
+        currentFn();  //当前委托
+        triggerFn(); //委托触发量
+        historyFn();//交易历史
+
+
+
+    });
+    function drapScreen(){
+        var src_posi_Y = 0, dest_posi_Y = 0, move_Y = 0, is_mouse_down = false, destHeight = 200;
+        $("#drap").mousedown(function(e){
+            src_posi_Y = e.pageY;
+            is_mouse_down = true;
+        });
+        $(document).bind("click mouseup",function(e){
+            if(is_mouse_down){
+                is_mouse_down = false;
+            }
+        })
+            .mousemove(function(e){
+                dest_posi_Y = e.pageY;
+                move_Y = src_posi_Y - dest_posi_Y;
+                src_posi_Y = dest_posi_Y;
+                destHeight = $("#panel-tab").height() + move_Y;
+                if(is_mouse_down && destHeight<360){
+                    resizeScreen();
+                    //判断destHeight是否大于200
+                    if(document.body.clientWidth>1366){
+                        $(".panel-bottom").css("height", destHeight > 230 ? destHeight : 230);
+                    }else{
+                        $(".panel-bottom").css("height", destHeight > 200 ? destHeight : 200);
+                    }
+
+                }
+            });
+    }
+    function resizeScreen() {
+        var tradeCont = document.getElementById('trade-cont');
+        var marketCont = document.getElementById('marketCont');
+        var contractCont = document.getElementById('contractCont');
+        var propertyCont = document.getElementById('propertyCont');
+        var contractTab = document.getElementById('contractTab');
+        var marketTable = document.getElementById('marketTable');
+        var propertyTable = document.getElementById('propertyTable');
+        var limitTab = document.getElementById('limitTab');
+        tradeCont.style.height=768+'px';
+        var windowWidth = $(window).width();
+        $('.currency-lf-top').height($('.chart-wrapper').height()+5);
+
+        if(windowWidth>1400) {
+            tradeCont.style.height=768+'px';
+        }
+    }
+
+    window.addEventListener("resize", resizeScreen);
+
+
+
+    $('.form-box label').click(function(){
+        $(this).addClass('on');
+        $(this).find('.estimate-box').addClass('show');
+        $(this).parents('.mod-body').find('.estimate-box').removeClass('show');
+        $(this).find('.estimate-box').addClass('show');
+    })
+
+</script>
+</body>
+</html>
